@@ -31,7 +31,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 28%; /* wajah aman */
+  object-position: 50% 28%;
 }
 
 #cover::before {
@@ -51,40 +51,24 @@ html, body {
   color: #a50000;
   padding: 18px 28px;
   border-radius: 16px;
-  /* backdrop-filter: blur(3px); */
-  /* background: rgba(0,0,0,0.25); */
 }
 
-.cover-text h3 {
-  margin: 0;
-  font-weight: 400;
-  letter-spacing: 1px;
-}
+.cover-text h3 { margin: 0; font-weight: 400; letter-spacing: 1px; }
+.cover-text h1 { margin: 10px 0 6px; font-family: "Playfair Display", serif; font-size: 42px; }
+.cover-text p { margin: 0; font-size: 16px; }
 
-.cover-text h1 {
-  margin: 10px 0 6px;
-  font-family: "Playfair Display", serif;
-  font-size: 42px;
-}
-
-.cover-text p {
-  margin: 0;
-  font-size: 16px;
-}
- /* NAMA TAMU */
+/* NAMA TAMU */
 .guest-name {
   position: absolute;
-  bottom: 110px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  color: #691f1f;
+  color: #3d3737;
   font-size: 16px;
-  padding: 10px 22px;
+  padding: 10px 20px;
   border-radius: 20px;
-  /* background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(3px); */
-  text-align: center;
   display: none;
+  text-align: center;
 }
 
 /* BUTTON */
@@ -101,6 +85,8 @@ html, body {
   font-size: 18px;
   cursor: pointer;
 }
+
+/* MAP LINK */
 .map-link {
   display: inline-block;
   margin-top: 6px;
@@ -109,10 +95,7 @@ html, body {
   text-decoration: none;
   border-bottom: 1px dashed #9e3434;
 }
-
-.map-link:hover {
-  opacity: 0.7;
-}
+.map-link:hover { opacity: 0.7; }
 
 /* ================================================= */
 
@@ -187,21 +170,9 @@ html, body {
 }
 
 /* MEMPELAI */
-.mempelai-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.mempelai-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s;
-}
-.mempelai-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.mempelai-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+.mempelai-item { opacity: 0; transform: translateY(30px); transition: 0.8s; }
+.mempelai-item.show { opacity: 1; transform: translateY(0); }
 
 /* FLOATING MENU */
 #floatingMenu {
@@ -217,14 +188,7 @@ html, body {
   box-shadow: 0 10px 26px rgba(0,0,0,0.18);
   z-index: 999;
 }
-
-.menu-item {
-  font-size: 22px;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-  transition: transform 0.2s;
-}
+.menu-item { font-size: 22px; cursor: pointer; padding: 10px; border-radius: 50%; transition: transform 0.2s; }
 .menu-item:hover { transform: scale(1.15); }
 .menu-item.active { color: #9e3434; }
 
@@ -245,216 +209,15 @@ html, body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
-.guest-name {
-  position: absolute;
-  bottom: 100px; /* tepat di atas tombol */
-  left: 50%;
-  transform: translateX(-50%);
-  color: #3d3737;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  /* background: rgba(0,0,0,0.35); */
-  /* backdrop-filter: blur(3px); */
-  display: none; /* default disembunyikan */
-  text-align: center;
-}
-/* ===== ORNAMEN ETNIK ===== */
-#acara {
-  position: relative;
-}
-
-/* Divider etnik */
-.divider-etnik {
-  width: 160px;
-  height: auto;
-  margin: 12px auto 20px;
-}
-
-.divider-etnik line,
-.divider-etnik polygon {
-  stroke: #6B4A2D;
-  fill: #6B4A2D;
-  stroke-width: 1;
-  opacity: 0.65;
-}
-
-/* Ornamen ulos pojok */
-.ornamen-ulos {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 80px;
-  opacity: 0.06;
-  pointer-events: none;
-}
-
-/* Tablet */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .ornamen-ulos {
-    width: 64px;
-    top: 20px;
-    right: 20px;
-  }
+  .ornamen-ulos { width: 64px; top: 20px; right: 20px; }
 }
-
-/* Mobile */
 @media (max-width: 768px) {
-  .divider-etnik {
-    width: 120px;
-  }
-
-  .ornamen-ulos {
-    width: 48px;
-    top: 16px;
-    right: 16px;
-    opacity: 0.04;
-  }
+  #mainPage { flex-direction: column; }
+  .left-side { width: 100%; height: 60vh; }
+  .right-side { width: 100%; height: auto; padding-bottom: 160px; }
 }
-
-/* ===== GALLERY STORY & CUE ===== */
-.gallery-box {
-  position: relative;
-}
-
-.gallery-story {
-  font-size: 14px;
-  line-height: 1.7;
-  margin: 12px 0 18px;
-  color: #3d3737;
-  opacity: 0.85;
-}
-
-.gallery-hint {
-  font-size: 13px;
-  color: #6B4A2D;
-  opacity: 0.75;
-  margin-bottom: 14px;
-}
-
-/* Panah ke kiri */
-.gallery-arrow {
-  font-size: 28px;
-  color: #6B4A2D;
-  opacity: 0.35;
-  animation: slideLeft 1.6s infinite ease-in-out;
-  user-select: none;
-}
-
-/* Animasi panah */
-@keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-    opacity: 0.25;
-  }
-  50% {
-    transform: translateX(-10px);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 0.25;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .gallery-story {
-    font-size: 13px;
-  }
-
-  .gallery-arrow {
-    font-size: 22px;
-  }
-}
-.gift-header {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.gift-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 500;
-  color: #6B4A2D;
-  margin-bottom: 8px;
-}
-
-.gift-subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  color: #7A6A5A;
-  margin-bottom: 14px;
-  line-height: 1.6;
-}
-
-.gift-ornament {
-  width: 120px;
-  opacity: 0.6;
-}
-
-.gift-ornament line,
-.gift-ornament circle {
-  stroke: #6B4A2D;
-  stroke-width: 1;
-  fill: none;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .gift-title {
-    font-size: 20px;
-  }
-
-  .gift-subtitle {
-    font-size: 12px;
-  }
-}
-.gift-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.gift-card {
-  text-align: center;
-  padding: 18px 16px;
-  border: 1px solid rgba(107, 74, 45, 0.25);
-  border-radius: 16px;
-  background: transparent;
-}
-
-.gift-card h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #6B4A2D;
-  margin-bottom: 6px;
-}
-
-.gift-name {
-  font-size: 13px;
-  color: #7A6A5A;
-  margin-bottom: 4px;
-}
-
-.gift-number {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  color: #3F2A18;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .gift-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
 </style>
 </head>
 
@@ -469,15 +232,11 @@ html, body {
     <p>16 Januari 2026</p>
   </div>
   <button onclick="openInvitation()">Buka Undangan</button>
-</section>
- <!-- NAMA TAMU -->
   <div class="guest-name" id="guestName">
-    Kepada Yth.<br>
-    <b>Tamu Undangan</b>
+    Kepada Yth.<br><b>Tamu Undangan</b>
   </div>
-
-  <button onclick="openInvitation()">Buka Undangan</button>
 </section>
+
 <!-- MAIN -->
 <div id="mainPage">
 
@@ -510,6 +269,7 @@ html, body {
 </div>
 
 <div class="right-side" id="rightHome">
+<!-- =================== MEMPELAI =================== -->
 <section id="mempelai" class="section-box">
   <div class="mempelai-item" id="mp">
     <img src="andre.jpg" class="mempelai-img">
@@ -523,8 +283,8 @@ html, body {
   </div>
 </section>
 
+<!-- =================== ACARA =================== -->
 <section id="acara" class="section-box">
-
   <!-- Ornamen pojok -->
   <svg class="ornamen-ulos" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#6B4A2D" stroke-width="1">
@@ -537,7 +297,6 @@ html, body {
 
   <h3>Jadwal Acara</h3>
 
-  <!-- Divider -->
   <svg class="divider-etnik" viewBox="0 0 260 24" xmlns="http://www.w3.org/2000/svg">
     <line x1="0" y1="12" x2="110" y2="12"/>
     <polygon points="130,4 138,12 130,20 122,12"/>
@@ -549,93 +308,82 @@ html, body {
   <p>
     <b>Pemberkatan</b><br>
     GMI Tobasari, Sidamanik<br>
-    <a href="https://maps.app.goo.gl/EVazGEyby2Fw2uXx6?g_st=aw"
-       target="_blank"
-       class="map-link">
-       📍 Lihat Lokasi
-    </a>
+    <a href="https://maps.app.goo.gl/EVazGEyby2Fw2uXx6?g_st=aw" target="_blank" class="map-link">📍 Lihat Lokasi</a>
   </p>
 
   <p style="margin-top:16px">
     <b>Resepsi</b><br>
     Balai Pertemuan Kecamatan Sidamanik<br>
-    <a href="https://maps.app.goo.gl/hMmM6Jp8HyMkhxhh9"
-       target="_blank"
-       class="map-link">
-       📍 Lihat Lokasi
-    </a>
+    <a href="https://maps.app.goo.gl/hMmM6Jp8HyMkhxhh9" target="_blank" class="map-link">📍 Lihat Lokasi</a>
   </p>
 </section>
 
+<!-- =================== GALLERY =================== -->
 <section id="gallery" class="section-box gallery-box">
   <h3>Gallery</h3>
-
   <p class="gallery-story">
     Setiap langkah dalam perjalanan kami tersimpan dalam potret sederhana,
     menjadi saksi doa, tawa, dan cinta yang kami rajut bersama.
   </p>
-
-  <p class="gallery-hint">
-    Lihat kisah kami melalui slideshow di sebelah kiri
-  </p>
-
-  <!-- Panah animasi -->
-  <div class="gallery-arrow">
-    ❮❮❮
-  </div>
+  <p class="gallery-hint">Lihat kisah kami melalui slideshow di sebelah kiri</p>
+  <div class="gallery-arrow">❮❮❮</div>
 </section>
 
-
+<!-- =================== GIFT =================== -->
 <section id="gift" class="section-box">
   <h3>Gift 🎁</h3>
   <div class="gift-header">
-  <h2 class="gift-title">Doa & Tanda Kasih </h2>
-  <p class="gift-subtitle">
-    Kehadiran dan doa restu  sudah sangat berarti bagi kami
-  </p>
-
-  <svg class="gift-ornament" viewBox="0 0 160 20" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="10" x2="60" y2="10"/>
-    <circle cx="80" cy="10" r="3"/>
-    <line x1="100" y1="10" x2="160" y2="10"/>
-  </svg>
-<div class="gift-grid">
-  <div class="gift-card">
-    <h4>Bank Mandiri</h4>
-    <p class="gift-name">ESTER YUNITA YOLANDA</p>
-    <p class="gift-number">1070018548539</p>
+    <h2 class="gift-title">Doa & Tanda Kasih </h2>
+    <p class="gift-subtitle">
+      Kehadiran dan doa restu sudah sangat berarti bagi kami
+    </p>
+    <svg class="gift-ornament" viewBox="0 0 160 20" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="10" x2="60" y2="10"/>
+      <circle cx="80" cy="10" r="3"/>
+      <line x1="100" y1="10" x2="160" y2="10"/>
+    </svg>
+    <div class="gift-grid">
+      <div class="gift-card">
+        <h4>Bank Mandiri</h4>
+        <p class="gift-name">ESTER YUNITA YOLANDA</p>
+        <p class="gift-number">1070018548539</p>
+      </div>
+      <div class="gift-card">
+        <h4>Bank BNI</h4>
+        <p class="gift-name">Andre Firdaus Siadari</p>
+        <p class="gift-number">1727502894</p>
+      </div>
+    </div>
   </div>
-
-  <div class="gift-card">
-    <h4>Bank BNI</h4>
-    <p class="gift-name">Andre Firdaus Siadari</p>
-    <p class="gift-number">1727502894</p>
-  </div>
-</div>
+</section>
 
 </div>
 
 <script>
+/* ===== OPEN INVITATION ===== */
 function openInvitation(){
-  cover.style.display="none";
-  mainPage.style.display="flex";
-  floatingMenu.style.display="flex";
-  musicBtn.style.display="flex";
-  bgMusic.play().catch(()=>{});
+  document.getElementById("cover").style.display="none";
+  document.getElementById("mainPage").style.display="flex";
+  document.getElementById("floatingMenu").style.display="flex";
+  document.getElementById("musicBtn").style.display="flex";
+  document.getElementById("bgMusic").play().catch(()=>{});
   startSlide();
   startAutoScroll();
   setTimeout(()=>{
-    mp.classList.add("show");
-    mw.classList.add("show");
+    document.getElementById("mp").classList.add("show");
+    document.getElementById("mw").classList.add("show");
   },800);
 }
 
-let playing=true;
+/* ===== MUSIC ===== */
+let playing = true;
 function toggleMusic(){
-  playing?bgMusic.pause():bgMusic.play();
-  playing=!playing;
+  const bgMusic = document.getElementById("bgMusic");
+  playing ? bgMusic.pause() : bgMusic.play();
+  playing = !playing;
 }
 
+/* ===== SLIDESHOW ===== */
 let i=0;
 function startSlide(){
   showSlide(i);
@@ -650,7 +398,7 @@ function showSlide(n){
 function nextSlide(){ showSlide(++i); }
 function prevSlide(){ showSlide(--i); }
 
-/* AUTO SCROLL 2 DETIK */
+/* ===== AUTO SCROLL RIGHT SIDE ===== */
 const right=document.getElementById("rightHome");
 const sections=[...right.querySelectorAll("section")];
 let idx=0, paused=false;
@@ -664,43 +412,36 @@ function startAutoScroll(){
       idx=(idx+1)%sections.length;
       scrollToSection();
     }
-  },2000);
+  },3000);
 }
-
 ["wheel","touchstart","mousedown"].forEach(e=>{
-  right.addEventListener(e,()=>{
+  right.addEventListener(e, ()=>{
     paused=true;
     clearTimeout(window.resumeTimer);
     window.resumeTimer=setTimeout(()=>paused=false,5000);
   });
 });
 
+/* ===== FLOATING MENU ===== */
 document.querySelectorAll(".menu-item").forEach(m=>{
   m.onclick=()=>{
     paused=true;
     document.querySelectorAll(".menu-item").forEach(x=>x.classList.remove("active"));
     m.classList.add("active");
-
-    if(m.dataset.target==="home"){
-      right.scrollTo({top:0,behavior:"smooth"});
-      idx=0;
-    } else {
-      idx=sections.findIndex(s=>s.id===m.dataset.target);
-      scrollToSection();
-    }
+    if(m.dataset.target==="home"){ right.scrollTo({top:0,behavior:"smooth"}); idx=0; }
+    else { idx=sections.findIndex(s=>s.id===m.dataset.target); scrollToSection(); }
     setTimeout(()=>paused=false,5000);
   }
 });
-/* NAMA TAMU VIA LINK */
+
+/* ===== NAMA TAMU VIA LINK ===== */
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("to");
-if (guest) {
+if(guest){
   const guestDiv = document.getElementById("guestName");
   guestDiv.innerHTML = `Kepada Yth.<br><b>${decodeURIComponent(guest)}</b>`;
   guestDiv.style.display = "block";
 }
-
-
 </script>
 
 </body>
