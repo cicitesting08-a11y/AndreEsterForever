@@ -9,12 +9,28 @@
 
 <style>
 html, body {
-  width: 100%;
-  height: 100%;
   margin: 0;
+  height: 100%;
   font-family: "Montserrat", sans-serif;
   background: #f8f1e9;
   overflow: hidden;
+}
+
+/* ================= GOLD GLOSSY ================= */
+.gold-glossy {
+  background: linear-gradient(
+    180deg,
+    #FFFBE1 0%,
+    #F9E88C 25%,
+    #D4AF37 55%,
+    #B8962E 75%,
+    #FFF1B8 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.35),
+    0 0 10px rgba(255,215,0,0.35);
 }
 
 /* ================= COVER ================= */
@@ -22,7 +38,6 @@ html, body {
   width: 100%;
   height: 100vh;
   position: relative;
-  overflow: hidden;
 }
 
 #cover img {
@@ -38,185 +53,145 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.28);
 }
 
-/* TEKS COVER FIX */
 .cover-text {
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: 50%;
-  transform: translate(-50%, -55%);
+  transform: translate(-50%, -50%);
   text-align: center;
-  color: #a50000;
-  padding: 18px 28px;
-  border-radius: 16px;
 }
 
-.cover-text h3 { margin: 0; font-weight: 400; letter-spacing: 1px; }
-.cover-text h1 { margin: 10px 0 6px; font-family: "Playfair Display", serif; font-size: 42px; }
-.cover-text p { margin: 0; font-size: 16px; }
+.cover-text h3 {
+  font-size: clamp(14px, 3vw, 16px);
+  letter-spacing: 2px;
+}
 
-/* NAMA TAMU */
+.cover-text h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 8vw, 42px);
+  margin: 10px 0;
+}
+
+.cover-text p {
+  font-size: clamp(14px, 3vw, 16px);
+}
+
 .guest-name {
   position: absolute;
-  bottom: 100px;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
-  color: #3d3737;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 20px;
   display: none;
   text-align: center;
+  font-size: clamp(13px, 3vw, 15px);
 }
 
 /* BUTTON */
-#cover button {
-  position: absolute;
-  bottom: 36px;
+.open-invitation {
+  position: fixed;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 16px 40px;
-  background: #9e3434;
-  color: #fff;
-  border: 0;
+}
+
+.open-invitation button {
+  padding: 12px 28px;
   border-radius: 40px;
-  font-size: 18px;
+  border: 0;
+  background: linear-gradient(180deg,#E6C76E,#C9A13B);
+  color: #fff;
   cursor: pointer;
 }
 
-/* MAP LINK */
-.map-link {
-  display: inline-block;
-  margin-top: 6px;
-  color: #9e3434;
-  font-weight: 500;
-  text-decoration: none;
-  border-bottom: 1px dashed #9e3434;
-}
-.map-link:hover { opacity: 0.7; }
-
-/* ================================================= */
-
+/* ================= MAIN ================= */
 #mainPage {
   display: none;
-  width: 100%;
   height: 100vh;
-  display: flex;
 }
 
-/* LEFT */
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+/* LEFT SLIDESHOW */
 .left-side {
   width: 55%;
   padding: 20px;
 }
+
 .slideshow-container {
   height: 100%;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   position: relative;
 }
+
 .slide {
   display: none;
   height: 100%;
 }
+
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.prevBtn, .nextBtn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.prevBtn { left: 12px; }
-.nextBtn { right: 12px; }
-
-/* RIGHT */
+/* RIGHT CONTENT */
 .right-side {
   width: 45%;
   height: 100vh;
   overflow-y: auto;
-  padding: 0 26px 180px;
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-.right-side section {
-  min-height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 40px 26px 160px;
 }
 
-/* BOX */
 .section-box {
-  margin: 24px 0;
+  margin-bottom: 60px;
   padding: 28px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.45);
+  border-radius: 18px;
   text-align: center;
 }
 
-/* MEMPELAI */
-.mempelai-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
-.mempelai-item { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-.mempelai-item.show { opacity: 1; transform: translateY(0); }
-
-/* FLOATING MENU */
-#floatingMenu {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-  gap: 22px;
-  background: rgba(255,255,255,0.95);
-  padding: 14px 26px;
-  border-radius: 50px;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-  z-index: 999;
+.section-box h3 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 14px;
 }
-.menu-item { font-size: 22px; cursor: pointer; padding: 10px; border-radius: 50%; transition: transform 0.2s; }
-.menu-item:hover { transform: scale(1.15); }
-.menu-item.active { color: #9e3434; }
+
+/* MEMPELAI */
+.mempelai-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 14px;
+}
+
+/* MAP */
+.map-link {
+  color: #9e3434;
+  text-decoration: none;
+  border-bottom: 1px dashed #9e3434;
+}
 
 /* MUSIC */
 #musicBtn {
   position: fixed;
   bottom: 100px;
-  right: 22px;
+  right: 20px;
   width: 60px;
   height: 60px;
-  border-radius: 50%;
   background: #fff;
+  border-radius: 50%;
   display: none;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
   font-size: 24px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .ornamen-ulos { width: 64px; top: 20px; right: 20px; }
-}
-@media (max-width: 768px) {
-  #mainPage { flex-direction: column; }
-  .left-side { width: 100%; height: 60vh; }
-  .right-side { width: 100%; height: auto; padding-bottom: 160px; }
 }
 </style>
 </head>
@@ -226,168 +201,124 @@ html, body {
 <!-- COVER -->
 <section id="cover">
   <img src="image1.jpg">
+
   <div class="cover-text">
-    <h3>The Wedding Of</h3>
-    <h1>Andre & Ester</h1>
-    <p>16 Januari 2026</p>
+    <h3 class="gold-glossy">The Wedding Of</h3>
+    <h1 class="gold-glossy">Andre & Ester</h1>
+    <p class="gold-glossy">16 Januari 2026</p>
   </div>
-  <button onclick="openInvitation()">Buka Undangan</button>
-  <div class="guest-name" id="guestName">
+
+  <div class="guest-name gold-glossy" id="guestName">
     Kepada Yth.<br><b>Tamu Undangan</b>
+  </div>
+
+  <div class="open-invitation">
+    <button onclick="openInvitation()">Buka Undangan</button>
   </div>
 </section>
 
 <!-- MAIN -->
 <div id="mainPage">
+  <audio id="bgMusic" loop>
+    <source src="music.mp3">
+  </audio>
 
-<audio id="bgMusic" loop>
-  <source src="music.mp3">
-</audio>
+  <div id="musicBtn" onclick="toggleMusic()">🎵</div>
 
-<div id="musicBtn" onclick="toggleMusic()">🎵</div>
-
-<div id="floatingMenu">
-  <div class="menu-item active" data-target="home">🏠</div>
-  <div class="menu-item" data-target="mempelai">💍</div>
-  <div class="menu-item" data-target="acara">📅</div>
-  <div class="menu-item" data-target="gallery">🖼️</div>
-  <div class="menu-item" data-target="gift">🎁</div>
-</div>
-
-<div class="left-side">
-  <div class="slideshow-container">
-    <div class="slide"><img src="image1.jpg"></div>
-    <div class="slide"><img src="image2.jpg"></div>
-    <div class="slide"><img src="image3.jpg"></div>
-    <div class="slide"><img src="image4.jpg"></div>
-    <div class="slide"><img src="image5.jpg"></div>
-    <div class="slide"><img src="image6.jpg"></div>
-    <div class="slide"><img src="image7.jpg"></div>
-    <div class="prevBtn" onclick="prevSlide()">❮</div>
-    <div class="nextBtn" onclick="nextSlide()">❯</div>
-  </div>
-</div>
-
-<div class="right-side" id="rightHome">
-<!-- =================== MEMPELAI =================== -->
-<section id="mempelai" class="section-box">
-  <div class="mempelai-item" id="mp">
-    <img src="andre.jpg" class="mempelai-img">
-    <h3>Andre Firdaus Siadari, S.I.P.</h3>
-    <p>Putra dari Bapak D. Siadari dan Ibu Y. Gultom</p>
-  </div>
-  <div class="mempelai-item" id="mw" style="margin-top:30px">
-    <img src="ester.jpg" class="mempelai-img">
-    <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
-    <p>Putri dari Bapak P. Manurung dan Ibu T. Silitonga</p>
-  </div>
-</section>
-
-<!-- =================== ACARA =================== -->
-<section id="acara" class="section-box">
-  <!-- Ornamen pojok -->
-  <svg class="ornamen-ulos" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#6B4A2D" stroke-width="1">
-      <polygon points="60,10 90,40 60,70 30,40"/>
-      <polygon points="60,50 90,80 60,110 30,80"/>
-      <polygon points="10,60 40,30 70,60 40,90"/>
-      <polygon points="50,60 80,30 110,60 80,90"/>
-    </g>
-  </svg>
-
-  <h3>Jadwal Acara</h3>
-
-  <svg class="divider-etnik" viewBox="0 0 260 24" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="12" x2="110" y2="12"/>
-    <polygon points="130,4 138,12 130,20 122,12"/>
-    <line x1="150" y1="12" x2="260" y2="12"/>
-  </svg>
-
-  <p>16 Januari 2026</p>
-
-  <p>
-    <b>Pemberkatan</b><br>
-    GMI Tobasari, Sidamanik<br>
-    <a href="https://maps.app.goo.gl/EVazGEyby2Fw2uXx6?g_st=aw" target="_blank" class="map-link">📍 Lihat Lokasi</a>
-  </p>
-
-  <p style="margin-top:16px">
-    <b>Resepsi</b><br>
-    Balai Pertemuan Kecamatan Sidamanik<br>
-    <a href="https://maps.app.goo.gl/hMmM6Jp8HyMkhxhh9" target="_blank" class="map-link">📍 Lihat Lokasi</a>
-  </p>
-</section>
-
-<!-- =================== GALLERY =================== -->
-<section id="gallery" class="section-box gallery-box">
-  <h3>Gallery</h3>
-  <p class="gallery-story">
-    Setiap langkah dalam perjalanan kami tersimpan dalam potret sederhana,
-    menjadi saksi doa, tawa, dan cinta yang kami rajut bersama.
-  </p>
-  <p class="gallery-hint">Lihat kisah kami melalui slideshow di sebelah kiri</p>
-  <div class="gallery-arrow">❮❮❮</div>
-</section>
-
-<!-- =================== GIFT =================== -->
-<section id="gift" class="section-box">
-  <h3>Gift 🎁</h3>
-  <div class="gift-header">
-    <h2 class="gift-title">Doa & Tanda Kasih </h2>
-    <p class="gift-subtitle">
-      Kehadiran dan doa restu sudah sangat berarti bagi kami
-    </p>
-    <svg class="gift-ornament" viewBox="0 0 160 20" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="10" x2="60" y2="10"/>
-      <circle cx="80" cy="10" r="3"/>
-      <line x1="100" y1="10" x2="160" y2="10"/>
-    </svg>
-    <div class="gift-grid">
-      <div class="gift-card">
-        <h4>Bank Mandiri</h4>
-        <p class="gift-name">ESTER YUNITA YOLANDA</p>
-        <p class="gift-number">1070018548539</p>
-      </div>
-      <div class="gift-card">
-        <h4>Bank BNI</h4>
-        <p class="gift-name">Andre Firdaus Siadari</p>
-        <p class="gift-number">1727502894</p>
+  <div class="wrapper">
+    <!-- LEFT -->
+    <div class="left-side">
+      <div class="slideshow-container">
+        <div class="slide"><img src="image1.jpg"></div>
+        <div class="slide"><img src="image2.jpg"></div>
+        <div class="slide"><img src="image3.jpg"></div>
+        <div class="slide"><img src="image4.jpg"></div>
       </div>
     </div>
-  </div>
-</section>
 
+    <!-- RIGHT -->
+    <div class="right-side">
+
+      <!-- MEMPELAI -->
+      <div class="section-box">
+        <h3 class="gold-glossy">Mempelai</h3>
+
+        <img src="andre.jpg" class="mempelai-img">
+        <p><b>Andre Firdaus Siadari, S.I.P.</b><br>
+        Putra dari Bapak D. Siadari & Ibu Y. Gultom</p>
+
+        <img src="ester.jpg" class="mempelai-img">
+        <p><b>Ftr. Ester Yunita Yolanda Manurung, S.Kes</b><br>
+        Putri dari Bapak P. Manurung & Ibu T. Silitonga</p>
+      </div>
+
+      <!-- ACARA -->
+      <div class="section-box">
+        <h3 class="gold-glossy">Jadwal Acara</h3>
+        <p><b>16 Januari 2026</b></p>
+
+        <p>
+          <b>Pemberkatan</b><br>
+          GMI Tobasari, Sidamanik<br>
+          <a href="https://maps.app.goo.gl/EVazGEyby2Fw2uXx6" target="_blank" class="map-link">📍 Lihat Lokasi</a>
+        </p>
+
+        <p style="margin-top:16px">
+          <b>Resepsi</b><br>
+          Balai Pertemuan Kecamatan Sidamanik<br>
+          <a href="https://maps.app.goo.gl/hMmM6Jp8HyMkhxhh9" target="_blank" class="map-link">📍 Lihat Lokasi</a>
+        </p>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="section-box">
+        <h3 class="gold-glossy">Gallery</h3>
+        <p>
+          Setiap langkah perjalanan kami tersimpan dalam potret sederhana,
+          menjadi saksi doa, tawa, dan cinta yang kami rajut bersama.
+        </p>
+        <p>Lihat kisah kami melalui slideshow di sebelah kiri</p>
+      </div>
+
+      <!-- GIFT -->
+      <div class="section-box">
+        <h3 class="gold-glossy">Gift 🎁</h3>
+        <p>Kehadiran dan doa restu sudah sangat berarti bagi kami</p>
+
+        <p><b>Bank Mandiri</b><br>
+        ESTER YUNITA YOLANDA<br>
+        1070018548539</p>
+
+        <p><b>Bank BNI</b><br>
+        Andre Firdaus Siadari<br>
+        1727502894</p>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <script>
-/* ===== OPEN INVITATION ===== */
 function openInvitation(){
-  document.getElementById("cover").style.display="none";
-  document.getElementById("mainPage").style.display="flex";
-  document.getElementById("floatingMenu").style.display="flex";
-  document.getElementById("musicBtn").style.display="flex";
-  document.getElementById("bgMusic").play().catch(()=>{});
+  cover.style.display="none";
+  mainPage.style.display="block";
+  musicBtn.style.display="flex";
+  bgMusic.play().catch(()=>{});
   startSlide();
-  startAutoScroll();
-  setTimeout(()=>{
-    document.getElementById("mp").classList.add("show");
-    document.getElementById("mw").classList.add("show");
-  },800);
 }
 
-/* ===== MUSIC ===== */
-let playing = true;
+/* MUSIC */
+let playing=true;
 function toggleMusic(){
-  const bgMusic = document.getElementById("bgMusic");
-  playing ? bgMusic.pause() : bgMusic.play();
-  playing = !playing;
+  playing?bgMusic.pause():bgMusic.play();
+  playing=!playing;
 }
 
-/* ===== SLIDESHOW ===== */
+/* SLIDESHOW */
 let i=0;
 function startSlide(){
   showSlide(i);
-  setInterval(nextSlide,3500);
+  setInterval(()=>{ showSlide(++i); },3500);
 }
 function showSlide(n){
   const s=document.querySelectorAll(".slide");
@@ -395,52 +326,13 @@ function showSlide(n){
   i=(n+s.length)%s.length;
   s[i].style.display="block";
 }
-function nextSlide(){ showSlide(++i); }
-function prevSlide(){ showSlide(--i); }
 
-/* ===== AUTO SCROLL RIGHT SIDE ===== */
-const right=document.getElementById("rightHome");
-const sections=[...right.querySelectorAll("section")];
-let idx=0, paused=false;
-
-function scrollToSection(){
-  sections[idx].scrollIntoView({behavior:"smooth"});
-}
-function startAutoScroll(){
-  setInterval(()=>{
-    if(!paused){
-      idx=(idx+1)%sections.length;
-      scrollToSection();
-    }
-  },3000);
-}
-["wheel","touchstart","mousedown"].forEach(e=>{
-  right.addEventListener(e, ()=>{
-    paused=true;
-    clearTimeout(window.resumeTimer);
-    window.resumeTimer=setTimeout(()=>paused=false,5000);
-  });
-});
-
-/* ===== FLOATING MENU ===== */
-document.querySelectorAll(".menu-item").forEach(m=>{
-  m.onclick=()=>{
-    paused=true;
-    document.querySelectorAll(".menu-item").forEach(x=>x.classList.remove("active"));
-    m.classList.add("active");
-    if(m.dataset.target==="home"){ right.scrollTo({top:0,behavior:"smooth"}); idx=0; }
-    else { idx=sections.findIndex(s=>s.id===m.dataset.target); scrollToSection(); }
-    setTimeout(()=>paused=false,5000);
-  }
-});
-
-/* ===== NAMA TAMU VIA LINK ===== */
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("to");
+/* GUEST NAME */
+const params=new URLSearchParams(location.search);
+const guest=params.get("to");
 if(guest){
-  const guestDiv = document.getElementById("guestName");
-  guestDiv.innerHTML = `Kepada Yth.<br><b>${decodeURIComponent(guest)}</b>`;
-  guestDiv.style.display = "block";
+  guestName.innerHTML=`Kepada Yth.<br><b>${decodeURIComponent(guest)}</b>`;
+  guestName.style.display="block";
 }
 </script>
 
