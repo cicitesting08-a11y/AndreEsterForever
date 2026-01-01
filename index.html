@@ -16,9 +16,10 @@ html, body {
   background: #f8f1e9;
   overflow: hidden;
   color: #9e3434;
+  scroll-behavior: smooth;
 }
 
-/* ================= COVER ================= */
+/* ================= COVER (TIDAK DIUBAH) ================= */
 #cover {
   width: 100%;
   height: 100vh;
@@ -42,70 +43,61 @@ html, body {
   background: rgba(0,0,0,0.18);
 }
 
-/* COVER TEXT */
 .cover-text {
   position: absolute;
-  top: 12%;           /* NAIK */
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   z-index: 2;
+  color: #9e3434;
 }
 
 .cover-text h3 {
   margin: 0;
-  font-weight: 400;
   letter-spacing: 1px;
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: 14px;
 }
 
 .cover-text h1 {
   margin: 8px 0 6px;
   font-family: "Playfair Display", serif;
-  font-size: clamp(26px, 6vw, 34px); /* DIKECILKAN */
-  line-height: 1.2;
+  font-size: 34px;
 }
 
 .cover-text p {
   margin: 0;
-  font-size: clamp(12px, 3.2vw, 14px);
+  font-size: 14px;
 }
 
-/* GUEST NAME */
+/* GUEST */
 .guest-name {
   position: absolute;
   bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 14px;
-  padding: 8px 20px;
-  border-radius: 20px;
-  display: none;
   text-align: center;
+  display: none;
   z-index: 3;
-  color: #9e3434;
-;
 }
+
 .kepada {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.5); /* bisa diganti warna lain */
+  background: rgba(0,0,0,0.55);
   color: #fff;
   padding: 4px 10px;
   border-radius: 6px;
-  font-weight: 600;
-}
-.tamu {
+  font-size: 13px;
   display: inline-block;
-  margin-top: 6px;
-  background: rgba(255, 255, 255, 0.75);
-  color: #9e3434;
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-weight: 600;
-  max-width: 90%;
-  word-wrap: break-word;
 }
 
+.tamu {
+  margin-top: 6px;
+  background: rgba(255,255,255,0.85);
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
 
 /* BUTTON */
 .open-invitation {
@@ -124,7 +116,24 @@ html, body {
   border-radius: 30px;
   font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* MUSIC */
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #9e3434;
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 999;
 }
 
 /* ================= MAIN ================= */
@@ -139,12 +148,15 @@ html, body {
 .left-side {
   width: 55%;
   padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .slideshow-container {
   height: 100%;
   border-radius: 18px;
   overflow: hidden;
-  position: relative;
 }
 .slide { display: none; height: 100%; }
 .slide img {
@@ -158,78 +170,73 @@ html, body {
   width: 45%;
   height: 100vh;
   overflow-y: auto;
-  padding: 0 26px 180px;
-}
-.right-side section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 40px 26px 180px;
 }
 
-/* BOX */
 .section-box {
-  margin: 24px 0;
+  margin-bottom: 40px;
   padding: 28px;
   border-radius: 18px;
   background: rgba(255,255,255,0.45);
   text-align: center;
 }
 
-/* MEMPELAI */
 .mempelai-img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
-/* MAP */
 .map-link {
   display: inline-block;
   margin-top: 6px;
   color: #9e3434;
-  font-weight: 500;
   text-decoration: none;
   border-bottom: 1px dashed #9e3434;
 }
 
-/* ================= MOBILE ================= */
+/* NAV BUTTON SECTION */
+.nav-buttons {
+  position: fixed;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.nav-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #9e3434;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
   body { overflow-y: auto; }
-
-  #mainPage {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .left-side,
-  .right-side {
-    width: 100%;
-    height: auto;
-  }
-
-  .left-side {
-    height: 60vh;
-  }
-
-  .right-side section {
-    min-height: auto;
-    padding: 40px 0;
-  }
-
-  .guest-name {
-    bottom: 165px;
-  }
-
-  .open-invitation {
-    bottom: 70px;
-  }
+  #mainPage { flex-direction: column; height: auto; }
+  .left-side, .right-side { width: 100%; }
+  .left-side { height: 50vh; margin-bottom: 20px; }
+  .guest-name { bottom: 165px; }
+  .open-invitation { bottom: 70px; }
+  .nav-buttons { position: static; flex-direction: row; justify-content: center; margin-bottom: 12px; transform: none; }
 }
 </style>
 </head>
 
 <body>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- COVER -->
 <section id="cover">
@@ -242,11 +249,9 @@ html, body {
   </div>
 
   <div class="guest-name" id="guestName">
-  <span class="kepada">Kepada Yth.</span><br>
-  <b>Tamu Undangan</b>
-</div>
-
-
+    <span class="kepada">Kepada Yth.</span><br>
+    <span class="tamu">Tamu Undangan</span>
+  </div>
 
   <div class="open-invitation">
     <button onclick="openInvitation()">Buka Undangan</button>
@@ -261,77 +266,147 @@ html, body {
     <div class="slide"><img src="image1.jpg"></div>
     <div class="slide"><img src="image2.jpg"></div>
     <div class="slide"><img src="image3.jpg"></div>
+    <div class="slide"><img src="image4.jpg"></div>
+    <div class="slide"><img src="image5.jpg"></div>
+    <div class="slide"><img src="image6.jpg"></div>
+    <div class="slide"><img src="image7.jpg"></div>
   </div>
 </div>
 
 <div class="right-side">
 
-<section class="section-box">
-  <img src="andre.jpg" class="mempelai-img">
-  <h3>Andre Firdaus Siadari, S.I.P.</h3>
-  <p>Putra dari Bapak D. Siadari dan Ibu Y. Gultom</p>
+  <!-- MEMPELAI -->
+  <section class="section-box">
+    <img src="andre.jpg" class="mempelai-img">
+    <h3>Andre Firdaus Siadari, S.I.P.</h3>
+    <p>Putra dari Bapak D. Siadari<br>dan Ibu Y. Gultom</p>
 
-  <img src="ester.jpg" class="mempelai-img" style="margin-top:24px">
-  <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
-  <p>Putri dari Bapak P. Manurung dan Ibu T. Silitonga</p>
-</section>
+    <img src="ester.jpg" class="mempelai-img" style="margin-top:20px">
+    <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
+    <p>Putri dari Bapak P. Manurung<br>dan Ibu T. Silitonga</p>
+  </section>
 
-<section class="section-box">
-  <h3>Jadwal Acara</h3>
-  <p><b>Pemberkatan</b><br>GMI Tobasari, Sidamanik</p>
-  <a href="#" class="map-link">📍 Lihat Lokasi</a>
+  <!-- ACARA -->
+  <section class="section-box">
+    <h3>Jadwal Acara</h3>
+    <p><b>Pemberkatan</b><br>
+    Jumat, 16 Januari 2026<br>
+    GMI Tobasari, Sidamanik</p>
+    <a href="#" class="map-link">📍 Lihat Lokasi</a>
 
-  <p style="margin-top:16px"><b>Resepsi</b><br>Balai Pertemuan Sidamanik</p>
-  <a href="#" class="map-link">📍 Lihat Lokasi</a>
-</section>
+    <p style="margin-top:16px"><b>Resepsi</b><br>
+    Jumat, 16 Januari 2026<br>
+    Balai Pertemuan Sidamanik</p>
+    <a href="#" class="map-link">📍 Lihat Lokasi</a>
+  </section>
 
-<section class="section-box">
-  <h3>Gallery</h3>
-  <p>Lihat momen kami melalui slideshow di sebelah kiri</p>
-</section>
+  <!-- GALLERY -->
+  <section class="section-box">
+    <h3>Gallery</h3>
+    <p>Momen kebahagiaan kami ditampilkan<br>melalui slideshow di samping</p>
+  </section>
 
-<section class="section-box">
-  <h3>Wedding Gift</h3>
-  <p><b>Bank Mandiri</b><br>ESTER YUNITA YOLANDA<br>1070018548539</p>
-  <p><b>Bank BNI</b><br>Andre Firdaus Siadari<br>1727502894</p>
-</section>
+  <!-- GIFT -->
+  <section class="section-box">
+    <h3>Wedding Gift</h3>
+    <p><b>Bank Mandiri</b><br>
+    Ester Yunita Yolanda<br>
+    1070018548539</p>
+
+    <p><b>Bank BNI</b><br>
+    Andre Firdaus Siadari<br>
+    1727502894</p>
+  </section>
 
 </div>
+
+<!-- NAV BUTTONS -->
+<div class="nav-buttons">
+  <button onclick="scrollToSection(0)">Mempelai</button>
+  <button onclick="scrollToSection(1)">Acara</button>
+  <button onclick="scrollToSection(2)">Gallery</button>
+  <button onclick="scrollToSection(3)">Gift</button>
 </div>
+
+</div>
+
+<div class="music-btn" onclick="toggleMusic()">🔊</div>
 
 <script>
+const music = document.getElementById("bgMusic");
+const musicBtn = document.querySelector(".music-btn");
+const cover = document.getElementById("cover");
+const mainPage = document.getElementById("mainPage");
+
+// OPEN INVITATION
 function openInvitation(){
   cover.style.display = "none";
   mainPage.style.display = "flex";
   startSlide();
+  music.play();
+  musicBtn.style.display = "flex";
 }
 
-/* SLIDE */
+// TOGGLE MUSIC
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+    musicBtn.innerHTML = "🔊";
+  } else {
+    music.pause();
+    musicBtn.innerHTML = "🔇";
+  }
+}
+
+// SLIDESHOW LEFT
 let i = 0;
 function startSlide(){
   showSlide(i);
   setInterval(()=>showSlide(++i), 3500);
 }
 function showSlide(n){
-  const s = document.querySelectorAll(".slide");
-  s.forEach(x=>x.style.display="none");
-  i = (n + s.length) % s.length;
-  s[i].style.display = "block";
+  const slides = document.querySelectorAll(".slide");
+  slides.forEach(s=>s.style.display="none");
+  i = (n + slides.length) % slides.length;
+  slides[i].style.display = "block";
 }
 
-/* GUEST */
+// GUEST NAME
 const params = new URLSearchParams(location.search);
 const guest = params.get("to");
-
-if (guest) {
+const guestName = document.getElementById("guestName");
+if(guest){
   guestName.innerHTML = `
     <span class="kepada">Kepada Yth.</span><br>
-    <span class="tamu"><b>${decodeURIComponent(guest)}</b></span>
+    <span class="tamu">${decodeURIComponent(guest)}</span>
   `;
   guestName.style.display = "block";
 }
-</script>
 
+// AUTO SCROLL RIGHT SIDE
+let currentSection = 0;
+const rightSide = document.querySelector(".right-side");
+const sections = document.querySelectorAll(".right-side .section-box");
+const slides = document.querySelectorAll(".slide");
+
+function scrollToSection(index){
+  if(sections[index]){
+    sections[index].scrollIntoView({behavior: "smooth", block: "start"});
+    currentSection = index;
+    // highlight slide sesuai section (opsional)
+    if(slides[index]){
+      slides.forEach(s=>s.style.display="none");
+      slides[index].style.display = "block";
+    }
+  }
+}
+
+// Auto scroll tiap 15 detik
+setInterval(()=>{
+  currentSection = (currentSection + 1) % sections.length;
+  scrollToSection(currentSection);
+}, 15000);
+</script>
 
 </body>
 </html>
