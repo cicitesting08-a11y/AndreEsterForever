@@ -9,17 +9,16 @@
 
 <style>
 html, body {
-  width: 100%;
-  height: 100%;
   margin: 0;
+  padding: 0;
   font-family: "Montserrat", sans-serif;
   background: #f8f1e9;
-  overflow: hidden;
   color: #9e3434;
+  overflow: hidden; /* tidak bisa scroll sebelum buka undangan */
   scroll-behavior: smooth;
 }
 
-/* ================= COVER (TIDAK DIUBAH) ================= */
+/* ================= COVER PAGE 1 ================= */
 #cover {
   width: 100%;
   height: 100vh;
@@ -47,17 +46,15 @@ html, body {
   position: absolute;
   top: 12%;
   left: 50%;
-  transform: translateX(-30%);
+  transform: translateX(-50%);
   text-align: center;
   z-index: 2;
-  color: #9e3434;
 }
 
 .cover-text h3 { margin: 0; letter-spacing: 1px; font-size: 14px; }
 .cover-text h1 { margin: 8px 0 6px; font-family: "Playfair Display", serif; font-size: 34px; }
 .cover-text p { margin: 0; font-size: 14px; }
 
-/* GUEST */
 .guest-name {
   position: absolute;
   bottom: 150px;
@@ -86,7 +83,6 @@ html, body {
   display: inline-block;
 }
 
-/* BUTTON */
 .open-invitation {
   position: absolute;
   bottom: 80px;
@@ -105,37 +101,18 @@ html, body {
   cursor: pointer;
 }
 
-/* MUSIC */
-.music-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: #9e3434;
-  color: #fff;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-/* ================= MAIN ================= */
+/* ================= MAIN PAGE 2 ================= */
 #mainPage {
-  display: none;
+  display: none; /* tersembunyi sebelum klik buka undangan */
   width: 100%;
   height: 100vh;
   display: flex;
 }
 
-/* LEFT */
+/* LEFT SIDE - SLIDESHOW */
 .left-side {
   width: 55%;
   padding: 20px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,10 +127,10 @@ html, body {
 .slide { display: none; height: 100%; }
 .slide img { width: 100%; height: 100%; object-fit: cover; }
 
-/* RIGHT */
+/* RIGHT SIDE - SCROLLABLE SECTION */
 .right-side {
   width: 45%;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   padding: 40px 26px 180px;
 }
@@ -182,9 +159,9 @@ html, body {
   border-bottom: 1px dashed #9e3434;
 }
 
-/* NAV BUTTON SECTION */
+/* NAV BUTTONS */
 .nav-buttons {
-  display: none !important; /* pastikan selalu hidden di awal */
+  display: none;
   position: fixed;
   top: 50%;
   right: 16px;
@@ -194,28 +171,40 @@ html, body {
   z-index: 10;
 }
 
-@media (max-width: 768px) {
-  .nav-buttons {
-    display: none !important; /* tetap hidden di mobile sebelum buka undangan */
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 12px;
-    transform: none;
-  }
+.nav-buttons button {
+  padding: 6px 14px;
+  background: #9e3434;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
+/* MUSIC BUTTON */
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #9e3434;
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
 
-
-
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-  body { overflow-y: auto; }
-  #mainPage { flex-direction: column; height: auto; }
+  #mainPage { flex-direction: column; }
   .left-side, .right-side { width: 100%; }
   .left-side { height: 50vh; margin-bottom: 20px; }
-  .guest-name { bottom: 165px; }
-  .open-invitation { bottom: 70px; }
-  .nav-buttons { position: static; flex-direction: row; justify-content: center; margin-bottom: 12px; transform: none; }
+  .right-side { height: auto; max-height: none; padding: 20px 16px 120px; }
+  .nav-buttons { position: static; flex-direction: row; justify-content: center; margin-bottom: 12px; display: flex; gap:6px; }
 }
 </style>
 </head>
@@ -226,27 +215,24 @@ html, body {
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- COVER -->
+<!-- ================= COVER PAGE 1 ================= -->
 <section id="cover">
   <img src="image1.jpg">
-
   <div class="cover-text">
     <h3>The Wedding Of</h3>
     <h1>Andre & Ester</h1>
     <p>16 Januari 2026</p>
   </div>
-
   <div class="guest-name" id="guestName">
     <span class="kepada">Kepada Yth.</span><br>
     <span class="tamu">Tamu Undangan</span>
   </div>
-
   <div class="open-invitation">
     <button onclick="openInvitation()">Buka Undangan</button>
   </div>
 </section>
 
-<!-- MAIN -->
+<!-- ================= MAIN PAGE 2 ================= -->
 <div id="mainPage">
 
 <div class="left-side">
@@ -262,13 +248,11 @@ html, body {
 </div>
 
 <div class="right-side">
-
   <!-- MEMPELAI -->
   <section class="section-box">
     <img src="andre.jpg" class="mempelai-img">
     <h3>Andre Firdaus Siadari, S.I.P.</h3>
     <p>Putra dari Bapak D. Siadari<br>dan Ibu Y. Gultom</p>
-
     <img src="ester.jpg" class="mempelai-img" style="margin-top:20px">
     <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
     <p>Putri dari Bapak P. Manurung<br>dan Ibu T. Silitonga</p>
@@ -277,14 +261,9 @@ html, body {
   <!-- ACARA -->
   <section class="section-box">
     <h3>Jadwal Acara</h3>
-    <p><b>Pemberkatan</b><br>
-    Jumat, 16 Januari 2026<br>
-    GMI Tobasari, Sidamanik</p>
+    <p><b>Pemberkatan</b><br>Jumat, 16 Januari 2026<br>GMI Tobasari, Sidamanik</p>
     <a href="#" class="map-link">📍 Lihat Lokasi</a>
-
-    <p style="margin-top:16px"><b>Resepsi</b><br>
-    Jumat, 16 Januari 2026<br>
-    Balai Pertemuan Sidamanik</p>
+    <p style="margin-top:16px"><b>Resepsi</b><br>Jumat, 16 Januari 2026<br>Balai Pertemuan Sidamanik</p>
     <a href="#" class="map-link">📍 Lihat Lokasi</a>
   </section>
 
@@ -297,18 +276,12 @@ html, body {
   <!-- GIFT -->
   <section class="section-box">
     <h3>Wedding Gift</h3>
-    <p><b>Bank Mandiri</b><br>
-    Ester Yunita Yolanda<br>
-    1070018548539</p>
-
-    <p><b>Bank BNI</b><br>
-    Andre Firdaus Siadari<br>
-    1727502894</p>
+    <p><b>Bank Mandiri</b><br>Ester Yunita Yolanda<br>1070018548539</p>
+    <p><b>Bank BNI</b><br>Andre Firdaus Siadari<br>1727502894</p>
   </section>
-
 </div>
 
-<!-- NAV BUTTONS (hanya muncul di page 2) -->
+<!-- NAV BUTTONS -->
 <div class="nav-buttons">
   <button onclick="scrollToSection(0)">Mempelai</button>
   <button onclick="scrollToSection(1)">Acara</button>
@@ -326,16 +299,33 @@ const musicBtn = document.querySelector(".music-btn");
 const cover = document.getElementById("cover");
 const mainPage = document.getElementById("mainPage");
 
+let slideInterval; // untuk slideshow auto
+let autoScrollInterval; // untuk scroll section
+
 // OPEN INVITATION
 function openInvitation(){
   cover.style.display = "none";
   mainPage.style.display = "flex";
-  document.querySelector(".nav-buttons").style.display = "flex"; // tampilkan button
-  startSlide();
+  document.body.style.overflow = "hidden"; // tetap fullscreen
+
+  // Mulai musik
   music.play();
   musicBtn.style.display = "flex";
-}
 
+  // Tampilkan tombol navigasi
+  document.querySelector(".nav-buttons").style.display = "flex";
+
+  // Mulai slideshow
+  startSlide();
+
+  // Mulai auto-scroll section
+  autoScrollInterval = setInterval(()=>{
+    let sections = document.querySelectorAll(".right-side .section-box");
+    let currentIndex = Array.from(sections).findIndex(s=>s.getBoundingClientRect().top >= 0);
+    let nextIndex = (currentIndex + 1) % sections.length;
+    sections[nextIndex].scrollIntoView({behavior: "smooth", block: "start"});
+  }, 15000);
+}
 
 // TOGGLE MUSIC
 function toggleMusic(){
@@ -352,7 +342,7 @@ function toggleMusic(){
 let i = 0;
 function startSlide(){
   showSlide(i);
-  setInterval(()=>showSlide(++i), 3500);
+  slideInterval = setInterval(()=>showSlide(++i), 3500);
 }
 function showSlide(n){
   const slides = document.querySelectorAll(".slide");
@@ -366,36 +356,17 @@ const params = new URLSearchParams(location.search);
 const guest = params.get("to");
 const guestName = document.getElementById("guestName");
 if(guest){
-  guestName.innerHTML = `
-    <span class="kepada">Kepada Yth.</span><br>
-    <span class="tamu">${decodeURIComponent(guest)}</span>
-  `;
+  guestName.innerHTML = `<span class="kepada">Kepada Yth.</span><br><span class="tamu">${decodeURIComponent(guest)}</span>`;
   guestName.style.display = "block";
 }
 
-// AUTO SCROLL RIGHT SIDE
-let currentSection = 0;
-const rightSide = document.querySelector(".right-side");
-const sections = document.querySelectorAll(".right-side .section-box");
-const slides = document.querySelectorAll(".slide");
-
+// NAV BUTTONS SCROLL
 function scrollToSection(index){
+  const sections = document.querySelectorAll(".right-side .section-box");
   if(sections[index]){
     sections[index].scrollIntoView({behavior: "smooth", block: "start"});
-    currentSection = index;
-    // highlight slide sesuai section (opsional)
-    if(slides[index]){
-      slides.forEach(s=>s.style.display="none");
-      slides[index].style.display = "block";
-    }
   }
 }
-
-// Auto scroll tiap 15 detik
-setInterval(()=>{
-  currentSection = (currentSection + 1) % sections.length;
-  scrollToSection(currentSection);
-}, 15000);
 </script>
 
 </body>
