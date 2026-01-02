@@ -10,202 +10,212 @@
 <style>
 *{box-sizing:border-box}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: "Montserrat", sans-serif;
-  background: #f8f1e9;
-  color: #9e3434;
-  overflow: hidden;
-  scroll-behavior: smooth;
+html,body{
+  margin:0;
+  padding:0;
+  font-family:"Montserrat",sans-serif;
+  background:#f8f1e9;
+  color:#9e3434;
+  overflow:hidden;
 }
 
 /* ================= COVER ================= */
-#cover {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+#cover{
+  width:100%;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
 }
 
-#cover img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 28%;
+#cover img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 28%;
 }
 
-.cover-text {
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 2;
+.cover-text{
+  position:absolute;
+  top:12%;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
 }
 
-.cover-text h3 { margin: 0; font-size: 14px; }
-.cover-text h1 { margin: 8px 0 6px; font-family: "Playfair Display", serif; font-size: 34px; }
-.cover-text p { margin: 0; font-size: 14px; }
+.cover-text h3{margin:0;font-size:14px}
+.cover-text h1{
+  margin:8px 0 6px;
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+}
+.cover-text p{margin:0;font-size:14px}
 
-/* ===== GUEST ===== */
-.guest-name {
-  position: absolute;
-  top: 66%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  width: 90%;
-  max-width: 320px;
-  padding: 14px 16px;
-  text-align: center;
+/* GUEST */
+.guest-name{
+  position:absolute;
+  bottom:200px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:320px;
+  text-align:center;
+  z-index:6;
+}
+.kepada{
+  font-size:16px;
+  font-weight:700;
+}
+.tamu{
+  display:inline-block;
+  margin-top:6px;
+  padding:8px 18px;
+  border-radius:18px;
+  background:#fff;
+  color:#000;
+  font-weight:700;
+  font-size:14px;
 }
 
-.kepada {
-   color: #000;
-   /* background: #e7e2e2; */
-  font-size: 17px;
-  font-weight: 600;
+/* BUTTON */
+.open-invitation{
+  position:absolute;
+  bottom:130px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:6;
 }
-
-.tamu {
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 18px;
-  background: #e7e2e2;
-  color: #000;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-/* ===== BUTTON ===== */
-.open-invitation {
-  position: absolute;
-  bottom: 46px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 6;
-}
-
-.open-invitation button {
-  padding: 12px 30px;
-  background: #9e3434;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
+.open-invitation button{
+  padding:12px 30px;
+  background:#9e3434;
+  color:#fff;
+  border:none;
+  border-radius:30px;
+  font-size:14px;
 }
 
 /* ================= MAIN ================= */
-#mainPage {
-  display: none;
-  width: 100%;
-  height: 100vh;
-  display: flex;
+#mainPage{
+  display:none;
+  width:100%;
+  height:100vh;
+  display:flex;
 }
 
 /* LEFT */
-.left-side {
-  width: 55%;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.left-side{
+  width:55%;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-
-.slideshow-container {
-  width: 100%;
-  max-width: 520px;
-  height: 100%;
-  border-radius: 18px;
-  overflow: hidden;
+.slideshow-container{
+  width:100%;
+  max-width:520px;
+  height:100%;
+  border-radius:18px;
+  overflow:hidden;
 }
-
-.slide { display: none; width: 100%; height: 100%; }
-.slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide{display:none;width:100%;height:100%}
+.slide img{width:100%;height:100%;object-fit:cover}
 
 /* RIGHT */
-.right-side {
-  width: 45%;
-  height: 100%;
-  overflow-y: auto;
-  padding: 40px 26px 180px;
-  scroll-behavior: smooth;
+.right-side{
+  width:45%;
+  height:100%;
+  overflow-y:auto;
+  padding:40px 26px 180px;
+  scroll-behavior:smooth;
 }
-
-.section-box {
-  min-height: 100vh; /* ⬅️ PENTING UNTUK AUTO SCROLL */
-  margin-bottom: 40px;
-  padding: 28px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.45);
-  text-align: center;
+.section-box{
+  margin-bottom:40px;
+  padding:28px;
+  border-radius:18px;
+  background:rgba(255,255,255,.45);
+  text-align:center;
 }
-
-.mempelai-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
+.mempelai-img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:10px;
 }
-
-.map-link {
-  display: inline-block;
-  margin-top: 6px;
-  color: #9e3434;
-  text-decoration: none;
-  border-bottom: 1px dashed #9e3434;
+.map-link{
+  display:inline-block;
+  margin-top:6px;
+  color:#9e3434;
+  text-decoration:none;
+  border-bottom:1px dashed #9e3434;
 }
 
 /* NAV */
-.nav-buttons {
-  display: none;
-  position: fixed;
-  top: 50%;
-  right: 16px;
-  transform: translateY(-50%);
-  flex-direction: column;
-  gap: 10px;
+.nav-buttons{
+  display:none;
+  position:fixed;
+  top:50%;
+  right:16px;
+  transform:translateY(-50%);
+  flex-direction:column;
+  gap:10px;
 }
-
-.nav-buttons button {
-  padding: 6px 14px;
-  background: #9e3434;
-  color: #fff;
-  border-radius: 12px;
-  border: none;
+.nav-buttons button{
+  padding:6px 14px;
+  background:#9e3434;
+  color:#fff;
+  border:none;
+  border-radius:12px;
 }
 
 /* MUSIC */
-.music-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: #9e3434;
-  color: #fff;
-  display: none;
-  align-items: center;
-  justify-content: center;
+.music-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#9e3434;
+  color:#fff;
+  display:none;
+  align-items:center;
+  justify-content:center;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
+  html,body{overflow-y:auto}
   #mainPage{flex-direction:column}
-  .left-side{width:100%;height:55vh}
-  .right-side{width:100%}
+
+  .guest-name{bottom:190px}
+  .open-invitation{bottom:120px}
+
+  .left-side{
+    width:100%;
+    height:45vh;
+    padding:12px;
+  }
+  .right-side{
+    width:100%;
+    padding:16px 14px 110px;
+  }
+
   .nav-buttons{
     position:static;
     flex-direction:row;
     display:flex;
     justify-content:center;
     margin-bottom:12px;
+    gap:6px;
   }
+}
+
+/* EXTRA SAFE */
+@media(max-height:640px){
+  .guest-name{bottom:220px}
+  .open-invitation{bottom:140px}
 }
 </style>
 </head>
@@ -216,8 +226,10 @@ html, body {
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- ================= COVER ================= -->
 <section id="cover">
   <img src="image1.jpg">
+
   <div class="cover-text">
     <h3>The Wedding Of</h3>
     <h1>Andre & Ester</h1>
@@ -225,8 +237,8 @@ html, body {
   </div>
 
   <div class="guest-name">
-    <span class="kepada">Kepada Yth Bapak/Ibu</span><br>
-    <span class="tamu" id="guestText">Tamu Undangan</span>
+    <div class="kepada">Kepada Yth.</div>
+    <div class="tamu" id="guestText">Tamu Undangan</div>
   </div>
 
   <div class="open-invitation">
@@ -234,59 +246,56 @@ html, body {
   </div>
 </section>
 
+<!-- ================= MAIN PAGE ================= -->
 <div id="mainPage">
 
-<div class="left-side">
-  <div class="slideshow-container">
-    <div class="slide"><img src="image1.jpg"></div>
-    <div class="slide"><img src="image2.jpg"></div>
-    <div class="slide"><img src="image3.jpg"></div>
-    <div class="slide"><img src="image4.jpg"></div>
-    <div class="slide"><img src="image5.jpg"></div>
-    <div class="slide"><img src="image6.jpg"></div>
-    <div class="slide"><img src="image7.jpg"></div>
+  <div class="left-side">
+    <div class="slideshow-container">
+      <div class="slide"><img src="image1.jpg"></div>
+      <div class="slide"><img src="image2.jpg"></div>
+      <div class="slide"><img src="image3.jpg"></div>
+      <div class="slide"><img src="image4.jpg"></div>
+      <div class="slide"><img src="image5.jpg"></div>
+    </div>
   </div>
-</div>
 
-<div class="right-side" id="rightWrapper">
+  <div class="right-side" id="rightWrapper">
 
-  <section class="section-box">
-    <img src="andre.jpg" class="mempelai-img">
-    <h3>Andre Firdaus Siadari, S.I.P.</h3>
-    <p>Putra dari Bapak D. Siadari<br>dan Ibu Y. Gultom</p>
+    <section class="section-box">
+      <img src="andre.jpg" class="mempelai-img">
+      <h3>Andre Firdaus Siadari, S.I.P.</h3>
+      <p>Putra dari Bapak D. Siadari<br>dan Ibu Y. Gultom</p>
 
-    <img src="ester.jpg" class="mempelai-img" style="margin-top:20px">
-    <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
-    <p>Putri dari Bapak P. Manurung<br>dan Ibu T. Silitonga</p>
-  </section>
-   <section class="section-box">
-    <h3>Jadwal Acara</h3>
-    <p><b>Pemberkatan</b><br>Jumat, 16 Januari 2026<br>GMI Tobasari, Sidamanik</p>
-    <a href="#" class="map-link">📍 Lihat Lokasi</a>
+      <img src="ester.jpg" class="mempelai-img" style="margin-top:20px">
+      <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
+      <p>Putri dari Bapak P. Manurung<br>dan Ibu T. Silitonga</p>
+    </section>
 
-    <p style="margin-top:16px"><b>Resepsi</b><br>Jumat, 16 Januari 2026<br>Balai Pertemuan Sidamanik</p>
-    <a href="#" class="map-link">📍 Lihat Lokasi</a>
-  </section>
+    <section class="section-box">
+      <h3>Jadwal Acara</h3>
+      <p><b>Pemberkatan</b><br>Jumat, 16 Januari 2026<br>GMI Tobasari, Sidamanik</p>
+      <a href="#" class="map-link">📍 Lihat Lokasi</a>
+    </section>
 
-   <section class="section-box">
-    <h3>Gallery</h3>
-    <p>Momen kebahagiaan kami ditampilkan<br>melalui slideshow di samping</p>
-  </section>
+    <section class="section-box">
+      <h3>Gallery</h3>
+      <p>Momen kebahagiaan kami ditampilkan melalui slideshow</p>
+    </section>
 
-  <section class="section-box">
-    <h3>Wedding Gift</h3>
-    <p><b>Bank Mandiri</b><br>Ester Yunita Yolanda<br>1070018548539</p>
-    <p><b>Bank BNI</b><br>Andre Firdaus Siadari<br>1727502894</p>
-  </section>
+    <section class="section-box">
+      <h3>Wedding Gift</h3>
+      <p><b>Bank Mandiri</b><br>Ester Yunita Yolanda<br>1070018548539</p>
+      <p><b>Bank BNI</b><br>Andre Firdaus Siadari<br>1727502894</p>
+    </section>
 
-</div>
+  </div>
 
-<div class="nav-buttons">
-  <button onclick="scrollToSection(0)">Mempelai</button>
-  <button onclick="scrollToSection(1)">Acara</button>
-  <button onclick="scrollToSection(2)">Gallery</button>
-  <button onclick="scrollToSection(3)">Gift</button>
-</div>
+  <div class="nav-buttons">
+    <button onclick="scrollToSection(0)">Mempelai</button>
+    <button onclick="scrollToSection(1)">Acara</button>
+    <button onclick="scrollToSection(2)">Gallery</button>
+    <button onclick="scrollToSection(3)">Gift</button>
+  </div>
 
 </div>
 
@@ -294,11 +303,9 @@ html, body {
 
 <script>
 /* GUEST */
-const params = new URLSearchParams(location.search);
-const guest = params.get("to");
-if(guest){
-  document.getElementById("guestText").innerText = decodeURIComponent(guest);
-}
+const params=new URLSearchParams(location.search);
+const guest=params.get("to");
+if(guest){guestText.innerText=decodeURIComponent(guest);}
 
 /* SLIDESHOW */
 let slideIndex=0;
@@ -321,19 +328,14 @@ function openInvitation(){
   startAutoScroll();
 }
 
-/* AUTO SCROLL RIGHT – 10 DETIK */
-let autoIndex = 0;
+/* AUTO SCROLL */
+let autoIndex=0;
 function startAutoScroll(){
-  const sections = document.querySelectorAll(".section-box");
-  const wrapper = document.getElementById("rightWrapper");
-
+  const sections=document.querySelectorAll(".section-box");
   setInterval(()=>{
-    autoIndex = (autoIndex + 1) % sections.length;
-    wrapper.scrollTo({
-      top: sections[autoIndex].offsetTop,
-      behavior: "smooth"
-    });
-  },9000);
+    autoIndex=(autoIndex+1)%sections.length;
+    sections[autoIndex].scrollIntoView({behavior:"smooth"});
+  },10000);
 }
 
 function scrollToSection(i){
@@ -342,7 +344,7 @@ function scrollToSection(i){
 }
 
 function toggleMusic(){
-  bgMusic.paused ? bgMusic.play() : bgMusic.pause();
+  bgMusic.paused?bgMusic.play():bgMusic.pause();
 }
 </script>
 
