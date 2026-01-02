@@ -8,17 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box}
+
 html, body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
   background: #f8f1e9;
   color: #9e3434;
-  overflow: hidden; /* tidak bisa scroll sebelum buka undangan */
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
-/* ================= COVER PAGE 1 ================= */
+/* ================= COVER ================= */
 #cover {
   width: 100%;
   height: 100vh;
@@ -51,23 +53,39 @@ html, body {
   z-index: 2;
 }
 
-.cover-text h3 { margin: 0; letter-spacing: 1px; font-size: 14px; }
-.cover-text h1 { 
-  margin: 8px 0 6px; 
-  font-family: "Playfair Display", serif; 
-  font-size: 28px; /* dikecilkan dari 34px */
-}
+.cover-text h3 { margin: 0; font-size: 14px; }
+.cover-text h1 { margin: 8px 0 6px; font-family: "Playfair Display", serif; font-size: 34px; }
 .cover-text p { margin: 0; font-size: 14px; }
 
 .guest-name {
   position: absolute;
-  bottom: 150px;
+  top: 70%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+
+  width: 88%;
+  max-width: 340px;
+
+  padding: 16px 18px;
+  border-radius: 20px;
+
+  /* background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px); */
+  -webkit-backdrop-filter: blur(10px);
+
   text-align: center;
-  display: none;
-  z-index: 3;
 }
+
+
+/* ⬇️ FIX AGAR TETAP MUNCUL SETELAH COVER HILANG
+.guest-name.fixed {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-30%);
+  z-index: 999;
+} */
 
 .kepada {
   background: rgba(0,0,0,0.55);
@@ -79,20 +97,21 @@ html, body {
 }
 
 .tamu {
-  margin-top: 6px;
-  background: rgba(255,255,255,0.85);
-  padding: 6px 14px;
-  border-radius: 14px;
-  font-weight: 600;
   display: inline-block;
+  padding: 8px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.95);
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
 }
+
 
 .open-invitation {
   position: absolute;
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
 }
 
 .open-invitation button {
@@ -101,51 +120,78 @@ html, body {
   color: #fff;
   border: none;
   border-radius: 30px;
-  font-size: 14px;
   cursor: pointer;
 }
+@media (max-width: 480px) {
+  .guest-name {
+    top: 62%;
+  }
 
-/* ================= MAIN PAGE 2 ================= */
-#mainPage {
-  display: none; /* tersembunyi sebelum klik buka undangan */
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
+  .open-invitation {
+    bottom: 36px;
+  }
 }
 
-/* LEFT SIDE - SLIDESHOW */
-.left-side {
+/* ================= MAIN ================= */
+#mainPage {
+  display: none;
   width: 100%;
-  height: auto; /* auto agar mobile tidak kepotong */
+  height: 100vh;
+  display: flex;
+}
+
+/* ===== LEFT SLIDESHOW ===== */
+.left-side {
+  width: 55%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slideshow-container {
   width: 100%;
+  max-width: 520px;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
 }
 
-.slide { display: none; width: 100%; }
-.slide img { width: 100%; height: auto; object-fit: contain; } /* object-fit contain agar tidak crop */
-
-/* RIGHT SIDE - SCROLLABLE SECTION */
-.right-side {
+.slide {
+  display: none;
   width: 100%;
-  height: auto; /* menyesuaikan konten */
-  max-height: 50vh; /* maksimal setengah layar */
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media(min-width:769px){
+  .slide img{object-fit:cover}
+}
+
+/* ===== RIGHT CONTENT ===== */
+.right-side {
+  width: 45%;
+  height: 100%;
   overflow-y: auto;
-  padding: 20px;
+  padding: 40px 26px 180px;
 }
 
 .section-box {
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 12px;
+  margin-bottom: 40px;
+  padding: 28px;
+  border-radius: 18px;
   background: rgba(255,255,255,0.45);
   text-align: center;
 }
 
 .mempelai-img {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
@@ -155,36 +201,34 @@ html, body {
   display: inline-block;
   margin-top: 6px;
   color: #9e3434;
-  text-decoration: none;
   border-bottom: 1px dashed #9e3434;
+  text-decoration: none;
 }
 
-/* NAV BUTTONS */
+/* NAV */
 .nav-buttons {
   display: none;
   position: fixed;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  flex-direction: row;
-  gap: 6px;
-  z-index: 10;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  flex-direction: column;
+  gap: 10px;
 }
 
 .nav-buttons button {
-  padding: 6px 12px;
+  padding: 6px 14px;
   background: #9e3434;
   color: #fff;
-  border: none;
   border-radius: 12px;
-  cursor: pointer;
+  border: none;
 }
 
-/* MUSIC BUTTON */
+/* MUSIC */
 .music-btn {
   position: fixed;
-  bottom: 70px;
-  right: 16px;
+  bottom: 24px;
+  right: 24px;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -193,16 +237,34 @@ html, body {
   display: none;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 999;
 }
 
-/* RESPONSIVE MOBILE */
-@media (max-width: 768px) {
-  #mainPage { flex-direction: column; height: auto; }
-  .left-side { height: auto; }
-  .right-side { max-height: none; padding: 16px; }
+/* MOBILE */
+@media(max-width:768px){
+  #mainPage{flex-direction:column}
+
+  .left-side{
+    width:100%;
+    height:55vh;
+    padding:16px;
+  }
+
+  .slideshow-container{
+    max-width:420px;
+  }
+
+  .right-side{
+    width:100%;
+    padding:20px 16px 120px;
+  }
+
+  .nav-buttons{
+    position:static;
+    flex-direction:row;
+    justify-content:center;
+    display:flex;
+    margin-bottom:12px;
+  }
 }
 </style>
 </head>
@@ -213,7 +275,6 @@ html, body {
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================= COVER PAGE 1 ================= -->
 <section id="cover">
   <img src="image1.jpg">
   <div class="cover-text">
@@ -221,16 +282,17 @@ html, body {
     <h1>Andre & Ester</h1>
     <p>16 Januari 2026</p>
   </div>
+
   <div class="guest-name" id="guestName">
     <span class="kepada">Kepada Yth.</span><br>
     <span class="tamu">Tamu Undangan</span>
   </div>
+
   <div class="open-invitation">
     <button onclick="openInvitation()">Buka Undangan</button>
   </div>
 </section>
 
-<!-- ================= MAIN PAGE 2 ================= -->
 <div id="mainPage">
 
 <div class="left-side">
@@ -246,40 +308,39 @@ html, body {
 </div>
 
 <div class="right-side">
-  <!-- MEMPELAI -->
+
   <section class="section-box">
     <img src="andre.jpg" class="mempelai-img">
     <h3>Andre Firdaus Siadari, S.I.P.</h3>
     <p>Putra dari Bapak D. Siadari<br>dan Ibu Y. Gultom</p>
-    <img src="ester.jpg" class="mempelai-img" style="margin-top:10px">
+
+    <img src="ester.jpg" class="mempelai-img" style="margin-top:20px">
     <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
     <p>Putri dari Bapak P. Manurung<br>dan Ibu T. Silitonga</p>
   </section>
 
-  <!-- ACARA -->
   <section class="section-box">
     <h3>Jadwal Acara</h3>
     <p><b>Pemberkatan</b><br>Jumat, 16 Januari 2026<br>GMI Tobasari, Sidamanik</p>
     <a href="#" class="map-link">📍 Lihat Lokasi</a>
-    <p style="margin-top:10px"><b>Resepsi</b><br>Jumat, 16 Januari 2026<br>Balai Pertemuan Sidamanik</p>
+
+    <p style="margin-top:16px"><b>Resepsi</b><br>Jumat, 16 Januari 2026<br>Balai Pertemuan Sidamanik</p>
     <a href="#" class="map-link">📍 Lihat Lokasi</a>
   </section>
 
-  <!-- GALLERY -->
   <section class="section-box">
     <h3>Gallery</h3>
-    <p>Momen kebahagiaan kami ditampilkan melalui slideshow di atas</p>
+    <p>Momen kebahagiaan kami ditampilkan<br>melalui slideshow di samping</p>
   </section>
 
-  <!-- GIFT -->
   <section class="section-box">
     <h3>Wedding Gift</h3>
     <p><b>Bank Mandiri</b><br>Ester Yunita Yolanda<br>1070018548539</p>
     <p><b>Bank BNI</b><br>Andre Firdaus Siadari<br>1727502894</p>
   </section>
+
 </div>
 
-<!-- NAV BUTTONS -->
 <div class="nav-buttons">
   <button onclick="scrollToSection(0)">Mempelai</button>
   <button onclick="scrollToSection(1)">Acara</button>
@@ -293,73 +354,60 @@ html, body {
 
 <script>
 const music = document.getElementById("bgMusic");
-const musicBtn = document.querySelector(".music-btn");
 const cover = document.getElementById("cover");
 const mainPage = document.getElementById("mainPage");
+const musicBtn = document.querySelector(".music-btn");
+const guestName = document.getElementById("guestName");
 
-let slideInterval;
-let autoScrollInterval;
+let slideIndex = 0;
+let autoScrollIndex = 0;
 
-// OPEN INVITATION
-function openInvitation(){
-  cover.style.display = "none";
-  mainPage.style.display = "flex";
-  document.body.style.overflow = "hidden";
-
-  music.play();
-  musicBtn.style.display = "flex";
-  document.querySelector(".nav-buttons").style.display = "flex";
-
-  startSlide();
-
-  // Auto scroll sections
-  const sections = document.querySelectorAll(".right-side .section-box");
-  let currentSection = 0;
-  autoScrollInterval = setInterval(()=>{
-    currentSection = (currentSection + 1) % sections.length;
-    sections[currentSection].scrollIntoView({behavior: "smooth", block: "start"});
-  }, 15000);
-}
-
-// TOGGLE MUSIC
-function toggleMusic(){
-  if(music.paused){
-    music.play();
-    musicBtn.innerHTML = "🔊";
-  } else {
-    music.pause();
-    musicBtn.innerHTML = "🔇";
-  }
-}
-
-// SLIDESHOW LEFT
-let i = 0;
-function startSlide(){
-  showSlide(i);
-  slideInterval = setInterval(()=>showSlide(++i), 3500);
-}
-function showSlide(n){
-  const slides = document.querySelectorAll(".slide");
-  slides.forEach(s=>s.style.display="none");
-  i = (n + slides.length) % slides.length;
-  slides[i].style.display = "block";
-}
-
-// GUEST NAME
+/* GUEST NAME FROM URL */
 const params = new URLSearchParams(location.search);
 const guest = params.get("to");
-const guestName = document.getElementById("guestName");
 if(guest){
   guestName.innerHTML = `<span class="kepada">Kepada Yth.</span><br><span class="tamu">${decodeURIComponent(guest)}</span>`;
   guestName.style.display = "block";
 }
 
-// NAV BUTTONS SCROLL
-function scrollToSection(index){
+/* OPEN */
+function openInvitation(){
+  cover.style.display = "none";
+  mainPage.style.display = "flex";
+
+  /* FIX: guest tetap tampil */
+  guestName.classList.add("fixed");
+  guestName.style.display = "block";
+
+  music.play();
+  musicBtn.style.display = "flex";
+  document.querySelector(".nav-buttons").style.display = "flex";
+
+  showSlide(0);
+  setInterval(()=>showSlide(++slideIndex),3500);
+
   const sections = document.querySelectorAll(".right-side .section-box");
-  if(sections[index]){
-    sections[index].scrollIntoView({behavior: "smooth", block: "start"});
-  }
+  setInterval(()=>{
+    sections[autoScrollIndex].scrollIntoView({behavior:"smooth",block:"start"});
+    autoScrollIndex = (autoScrollIndex+1)%sections.length;
+  },9000);
+}
+
+/* SLIDE */
+function showSlide(n){
+  const slides=document.querySelectorAll(".slide");
+  slides.forEach(s=>s.style.display="none");
+  slideIndex=(n+slides.length)%slides.length;
+  slides[slideIndex].style.display="block";
+}
+
+function toggleMusic(){
+  music.paused?music.play():music.pause();
+}
+
+function scrollToSection(i){
+  document.querySelectorAll(".section-box")[i]
+    ?.scrollIntoView({behavior:"smooth"});
 }
 </script>
 
