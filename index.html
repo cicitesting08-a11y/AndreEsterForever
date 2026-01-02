@@ -37,13 +37,6 @@ html, body {
   object-position: 50% 28%;
 }
 
-#cover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.18);
-}
-
 .cover-text {
   position: absolute;
   top: 12%;
@@ -57,79 +50,52 @@ html, body {
 .cover-text h1 { margin: 8px 0 6px; font-family: "Playfair Display", serif; font-size: 34px; }
 .cover-text p { margin: 0; font-size: 14px; }
 
+/* ===== GUEST ===== */
 .guest-name {
   position: absolute;
-  top: 70%;
+  top: 66%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 4;
-
-  width: 88%;
-  max-width: 340px;
-
-  padding: 16px 18px;
-  border-radius: 20px;
-
-  /* background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px); */
-  -webkit-backdrop-filter: blur(10px);
-
+  z-index: 5;
+  width: 90%;
+  max-width: 320px;
+  padding: 14px 16px;
   text-align: center;
 }
 
-
-/* ⬇️ FIX AGAR TETAP MUNCUL SETELAH COVER HILANG
-.guest-name.fixed {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-30%);
-  z-index: 999;
-} */
-
 .kepada {
-  background: rgba(0,0,0,0.55);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 13px;
-  display: inline-block;
+   color: #000;
+   /* background: #e7e2e2; */
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .tamu {
   display: inline-block;
   padding: 8px 18px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.95);
+  background: #e7e2e2;
   color: #000;
   font-weight: 600;
   font-size: 15px;
 }
 
-
+/* ===== BUTTON ===== */
 .open-invitation {
   position: absolute;
-  bottom: 80px;
+  bottom: 46px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 6;
 }
 
 .open-invitation button {
-  padding: 12px 28px;
+  padding: 12px 30px;
   background: #9e3434;
   color: #fff;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-}
-@media (max-width: 480px) {
-  .guest-name {
-    top: 62%;
-  }
-
-  .open-invitation {
-    bottom: 36px;
-  }
 }
 
 /* ================= MAIN ================= */
@@ -140,7 +106,7 @@ html, body {
   display: flex;
 }
 
-/* ===== LEFT SLIDESHOW ===== */
+/* LEFT */
 .left-side {
   width: 55%;
   padding: 20px;
@@ -157,31 +123,20 @@ html, body {
   overflow: hidden;
 }
 
-.slide {
-  display: none;
-  width: 100%;
-  height: 100%;
-}
+.slide { display: none; width: 100%; height: 100%; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-@media(min-width:769px){
-  .slide img{object-fit:cover}
-}
-
-/* ===== RIGHT CONTENT ===== */
+/* RIGHT */
 .right-side {
   width: 45%;
   height: 100%;
   overflow-y: auto;
   padding: 40px 26px 180px;
+  scroll-behavior: smooth;
 }
 
 .section-box {
+  min-height: 100vh; /* ⬅️ PENTING UNTUK AUTO SCROLL */
   margin-bottom: 40px;
   padding: 28px;
   border-radius: 18px;
@@ -201,8 +156,8 @@ html, body {
   display: inline-block;
   margin-top: 6px;
   color: #9e3434;
-  border-bottom: 1px dashed #9e3434;
   text-decoration: none;
+  border-bottom: 1px dashed #9e3434;
 }
 
 /* NAV */
@@ -242,27 +197,13 @@ html, body {
 /* MOBILE */
 @media(max-width:768px){
   #mainPage{flex-direction:column}
-
-  .left-side{
-    width:100%;
-    height:55vh;
-    padding:16px;
-  }
-
-  .slideshow-container{
-    max-width:420px;
-  }
-
-  .right-side{
-    width:100%;
-    padding:20px 16px 120px;
-  }
-
+  .left-side{width:100%;height:55vh}
+  .right-side{width:100%}
   .nav-buttons{
     position:static;
     flex-direction:row;
-    justify-content:center;
     display:flex;
+    justify-content:center;
     margin-bottom:12px;
   }
 }
@@ -283,9 +224,9 @@ html, body {
     <p>16 Januari 2026</p>
   </div>
 
-  <div class="guest-name" id="guestName">
-    <span class="kepada">Kepada Yth.</span><br>
-    <span class="tamu">Tamu Undangan</span>
+  <div class="guest-name">
+    <span class="kepada">Kepada Yth Bapak/Ibu</span><br>
+    <span class="tamu" id="guestText">Tamu Undangan</span>
   </div>
 
   <div class="open-invitation">
@@ -307,7 +248,7 @@ html, body {
   </div>
 </div>
 
-<div class="right-side">
+<div class="right-side" id="rightWrapper">
 
   <section class="section-box">
     <img src="andre.jpg" class="mempelai-img">
@@ -318,8 +259,7 @@ html, body {
     <h3>Ftr. Ester Yunita Yolanda Manurung, S.Kes</h3>
     <p>Putri dari Bapak P. Manurung<br>dan Ibu T. Silitonga</p>
   </section>
-
-  <section class="section-box">
+   <section class="section-box">
     <h3>Jadwal Acara</h3>
     <p><b>Pemberkatan</b><br>Jumat, 16 Januari 2026<br>GMI Tobasari, Sidamanik</p>
     <a href="#" class="map-link">📍 Lihat Lokasi</a>
@@ -328,7 +268,7 @@ html, body {
     <a href="#" class="map-link">📍 Lihat Lokasi</a>
   </section>
 
-  <section class="section-box">
+   <section class="section-box">
     <h3>Gallery</h3>
     <p>Momen kebahagiaan kami ditampilkan<br>melalui slideshow di samping</p>
   </section>
@@ -353,47 +293,15 @@ html, body {
 <div class="music-btn" onclick="toggleMusic()">🔊</div>
 
 <script>
-const music = document.getElementById("bgMusic");
-const cover = document.getElementById("cover");
-const mainPage = document.getElementById("mainPage");
-const musicBtn = document.querySelector(".music-btn");
-const guestName = document.getElementById("guestName");
-
-let slideIndex = 0;
-let autoScrollIndex = 0;
-
-/* GUEST NAME FROM URL */
+/* GUEST */
 const params = new URLSearchParams(location.search);
 const guest = params.get("to");
 if(guest){
-  guestName.innerHTML = `<span class="kepada">Kepada Yth.</span><br><span class="tamu">${decodeURIComponent(guest)}</span>`;
-  guestName.style.display = "block";
+  document.getElementById("guestText").innerText = decodeURIComponent(guest);
 }
 
-/* OPEN */
-function openInvitation(){
-  cover.style.display = "none";
-  mainPage.style.display = "flex";
-
-  /* FIX: guest tetap tampil */
-  guestName.classList.add("fixed");
-  guestName.style.display = "block";
-
-  music.play();
-  musicBtn.style.display = "flex";
-  document.querySelector(".nav-buttons").style.display = "flex";
-
-  showSlide(0);
-  setInterval(()=>showSlide(++slideIndex),3500);
-
-  const sections = document.querySelectorAll(".right-side .section-box");
-  setInterval(()=>{
-    sections[autoScrollIndex].scrollIntoView({behavior:"smooth",block:"start"});
-    autoScrollIndex = (autoScrollIndex+1)%sections.length;
-  },9000);
-}
-
-/* SLIDE */
+/* SLIDESHOW */
+let slideIndex=0;
 function showSlide(n){
   const slides=document.querySelectorAll(".slide");
   slides.forEach(s=>s.style.display="none");
@@ -401,13 +309,40 @@ function showSlide(n){
   slides[slideIndex].style.display="block";
 }
 
-function toggleMusic(){
-  music.paused?music.play():music.pause();
+/* OPEN */
+function openInvitation(){
+  cover.style.display="none";
+  mainPage.style.display="flex";
+  bgMusic.play();
+  document.querySelector(".music-btn").style.display="flex";
+  document.querySelector(".nav-buttons").style.display="flex";
+  showSlide(0);
+  setInterval(()=>showSlide(++slideIndex),3500);
+  startAutoScroll();
+}
+
+/* AUTO SCROLL RIGHT – 10 DETIK */
+let autoIndex = 0;
+function startAutoScroll(){
+  const sections = document.querySelectorAll(".section-box");
+  const wrapper = document.getElementById("rightWrapper");
+
+  setInterval(()=>{
+    autoIndex = (autoIndex + 1) % sections.length;
+    wrapper.scrollTo({
+      top: sections[autoIndex].offsetTop,
+      behavior: "smooth"
+    });
+  },9000);
 }
 
 function scrollToSection(i){
   document.querySelectorAll(".section-box")[i]
-    ?.scrollIntoView({behavior:"smooth"});
+    .scrollIntoView({behavior:"smooth"});
+}
+
+function toggleMusic(){
+  bgMusic.paused ? bgMusic.play() : bgMusic.pause();
 }
 </script>
 
